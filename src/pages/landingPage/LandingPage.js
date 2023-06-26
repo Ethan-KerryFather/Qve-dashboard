@@ -7,57 +7,30 @@ import {
   Text,
   View,
 } from "react-native";
-import { BoldWords, Words } from "../../customComponents/customComponents";
+import {
+  BoldWords,
+  Words,
+  Footer,
+  InvestBtn,
+  WordBox,
+  SubBox,
+  CheckoutBox,
+  EView,
+} from "../../customComponents/customComponents";
 import { useEffect, useRef } from "react";
 import DefaultView from "../../customComponents/DefaultView";
 import { styled } from "styled-components";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import Colors from "../../Colors";
 import { useAtom } from "jotai";
-import { fundEntireInfo } from "../../jotai/root";
-
-const EView = styled(View)`
-  flex-direction: column;
-  align-items: center;
-`;
-
-const InvestBtn = styled(Pressable)`
-  background-color: ${Colors.componentColors.purpleBtn};
-  width: 45%;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
-  height: ${RFPercentage(6.4)};
-`;
-
-const WordBox = styled(View)`
-  align-items: center;
-  margin-top: ${RFPercentage(4)};
-`;
-
-const SubBox = styled(View)`
-  width: 30%;
-  background-color: ${Colors.componentColors.graySubView};
-  border-radius: 10px;
-  align-items: center;
-  padding: 10px;
-  border-width: 0.7px;
-  border-color: gray;
-`;
-
-const CheckoutBox = styled(View)`
-  width: 80%;
-  height: ${RFPercentage(9)};
-  padding: 10px;
-  flex-direction: row;
-  background-color: ${Colors.componentColors.graySubView};
-  margin-bottom: 20;
-  border-radius: 10px;
-  padding: 10px;
-`;
-
+import { fundEntireInfo, strategies } from "../../jotai/root";
+import { Glitch } from "rn-glitch-effect";
+import { FloatDown } from "../../customComponents/Animation";
 const LandingPage = ({ navigation }) => {
   const FloatedAnim = useRef(new Animated.Value(0)).current;
+
+  const fundInfo = useAtom(fundEntireInfo);
+  const strategyInfo = useAtom(strategies);
 
   const FloatDown = () => {
     Animated.spring(FloatedAnim, {
@@ -67,8 +40,6 @@ const LandingPage = ({ navigation }) => {
       bounciness: 12, // 스프링의 바운스 정도 - 기본값 8
     }).start(() => {});
   };
-
-  const fundInfo = useAtom(fundEntireInfo);
   useEffect(() => {
     navigation.setOptions({
       headerShown: false,
@@ -92,7 +63,20 @@ const LandingPage = ({ navigation }) => {
             ],
           }}
         >
-          <Words style={{ fontSize: 30 }}>Decentralized</Words>
+          <Glitch
+            text={"Decentralized"}
+            shadowColor={"gray"}
+            mainColor={"white"}
+            textStyle={{
+              color: Colors.componentColors.whiteWords,
+              fontFamily: "MontserratBold",
+              fontSize: 25,
+            }}
+            glitchDuration={3000}
+            glitchAmplitude={10}
+            repeatDelay={300}
+          />
+          {/* <Words style={{ fontSize: 30 }}>Decentralized</Words> */}
           <BoldWords>Fund Liquidation</BoldWords>
           <BoldWords>Solution</BoldWords>
         </Animated.View>
@@ -103,7 +87,11 @@ const LandingPage = ({ navigation }) => {
             resizeMode="contain"
           />
         </View>
-        <InvestBtn>
+        <InvestBtn
+          onPress={() => {
+            navigation.navigate("Main");
+          }}
+        >
           <BoldWords style={{ fontSize: 15, letterSpacing: 1 }}>
             Invest Now
           </BoldWords>
@@ -177,7 +165,9 @@ const LandingPage = ({ navigation }) => {
           <CheckoutBox style={{ marginTop: "10%" }}>
             <View style={{ justifyContent: "center", flex: 4 }}>
               <BoldWords style={{ fontSize: 17 }}>Arbitrage</BoldWords>
-              <BoldWords style={{ fontSize: 12 }}>APR 12.3%</BoldWords>
+              <BoldWords style={{ fontSize: 12 }}>
+                APR {strategyInfo[0].arbitrage.apr}%
+              </BoldWords>
             </View>
             <View
               style={{
@@ -193,6 +183,9 @@ const LandingPage = ({ navigation }) => {
                   alignItems: "center",
                   justifyContent: "center",
                   borderRadius: 15,
+                }}
+                onPress={() => {
+                  navigation.navigate("Main");
                 }}
               >
                 <BoldWords style={{ fontSize: 12 }}>Invest</BoldWords>
@@ -202,7 +195,9 @@ const LandingPage = ({ navigation }) => {
           <CheckoutBox>
             <View style={{ justifyContent: "center", flex: 4 }}>
               <BoldWords style={{ fontSize: 17 }}>BTC Hedge</BoldWords>
-              <BoldWords style={{ fontSize: 12 }}>APR 12.3%</BoldWords>
+              <BoldWords style={{ fontSize: 12 }}>
+                APR {strategyInfo[0].btcHedge.apr}%
+              </BoldWords>
             </View>
             <View
               style={{
@@ -218,6 +213,9 @@ const LandingPage = ({ navigation }) => {
                   alignItems: "center",
                   justifyContent: "center",
                   borderRadius: 15,
+                }}
+                onPress={() => {
+                  navigation.navigate("Main");
                 }}
               >
                 <BoldWords style={{ fontSize: 12 }}>Invest</BoldWords>
@@ -227,7 +225,9 @@ const LandingPage = ({ navigation }) => {
           <CheckoutBox>
             <View style={{ justifyContent: "center", flex: 4 }}>
               <BoldWords style={{ fontSize: 17 }}>Funding Rate</BoldWords>
-              <BoldWords style={{ fontSize: 12 }}>APR 12.3%</BoldWords>
+              <BoldWords style={{ fontSize: 12 }}>
+                APR {strategyInfo[0].fundingRate.apr}%
+              </BoldWords>
             </View>
             <View
               style={{
@@ -244,13 +244,20 @@ const LandingPage = ({ navigation }) => {
                   justifyContent: "center",
                   borderRadius: 15,
                 }}
+                onPress={() => {
+                  navigation.navigate("Main");
+                }}
               >
                 <BoldWords style={{ fontSize: 12 }}>Invest</BoldWords>
               </Pressable>
             </View>
           </CheckoutBox>
         </WordBox>
-        <InvestBtn>
+        <InvestBtn
+          onPress={() => {
+            navigation.navigate("Main");
+          }}
+        >
           <BoldWords style={{ fontSize: 15, letterSpacing: 1 }}>
             View Portfolio
           </BoldWords>
@@ -272,7 +279,11 @@ const LandingPage = ({ navigation }) => {
             style={{ width: "90%" }}
             resizeMode="contain"
           />
-          <InvestBtn>
+          <InvestBtn
+            onPress={() => {
+              navigation.navigate("Main");
+            }}
+          >
             <BoldWords style={{ fontSize: 15, letterSpacing: 1 }}>
               Deposit Coins
             </BoldWords>
