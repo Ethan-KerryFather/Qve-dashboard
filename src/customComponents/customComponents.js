@@ -23,6 +23,7 @@ export const Words = styled(Text)`
   font-family: "Montserrat";
   font-size: 13px;
   color: ${Colors.componentColors.whiteWords};
+  align-self: ${(props) => (props.center ? "center" : "flex-start")};
 `;
 
 export const EView = styled(View)`
@@ -62,9 +63,9 @@ export const SubBox = styled(View)`
 `;
 
 export const CheckoutBox = styled(View)`
-  width: 80%;
-  height: ${RFPercentage(9)};
-  padding: 10px;
+  width: 95%;
+  height: ${RFPercentage(13)};
+  padding: 5px;
   flex-direction: row;
   background-color: ${Colors.componentColors.graySubView};
   margin-bottom: 20;

@@ -2,7 +2,7 @@ import { Image, ScrollView, StyleSheet, View } from "react-native";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import Colors from "../Colors";
 import { styled } from "styled-components";
-import { Words } from "./customComponents";
+import { BoldWords, Words } from "./customComponents";
 import { GlitchImage } from "rn-glitch-effect";
 
 /*
@@ -45,7 +45,7 @@ const MainContainer = styled(View)`
 function DefaultView({ children }) {
   return (
     <EntireContainer>
-      <Header>
+      <Header style={{ position: "relative" }}>
         <GlitchImage
           shadowColor="gray"
           source={require("../../assets/img/logo.png")}
@@ -58,6 +58,17 @@ function DefaultView({ children }) {
           repeatDelay={2000}
         />
         {/* <Image source={require("../../assets/img/logo.png")} /> */}
+        <BoldWords
+          style={{
+            marginLeft: "2%",
+            fontsize: "1rem",
+            position: "absolute",
+            right: 0,
+            bottom: 5,
+          }}
+        >
+          Dash Board
+        </BoldWords>
       </Header>
       <MainContainer>{children}</MainContainer>
       <Footer>

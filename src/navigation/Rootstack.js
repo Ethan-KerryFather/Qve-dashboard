@@ -40,7 +40,7 @@ export const RootStack = () => {
         }}
       />
       <Tab.Screen
-        name="Main"
+        name="ApolloX"
         component={MainScreen}
         options={{
           tabBarIcon: () => (

@@ -63,7 +63,7 @@ const LandingPage = ({ navigation }) => {
             ],
           }}
         >
-          <Glitch
+          {/* <Glitch
             text={"Decentralized"}
             shadowColor={"gray"}
             mainColor={"white"}
@@ -75,8 +75,8 @@ const LandingPage = ({ navigation }) => {
             glitchDuration={3000}
             glitchAmplitude={10}
             repeatDelay={300}
-          />
-          {/* <Words style={{ fontSize: 30 }}>Decentralized</Words> */}
+          /> */}
+          <Words style={{ fontSize: 30 }}>Decentralized</Words>
           <BoldWords>Fund Liquidation</BoldWords>
           <BoldWords>Solution</BoldWords>
         </Animated.View>
@@ -92,7 +92,7 @@ const LandingPage = ({ navigation }) => {
             navigation.navigate("Main");
           }}
         >
-          <BoldWords style={{ fontSize: 15, letterSpacing: 1 }}>
+          <BoldWords style={{ fontSize: 15, letterSpacing: 2 }}>
             Invest Now
           </BoldWords>
         </InvestBtn>
@@ -123,14 +123,14 @@ const LandingPage = ({ navigation }) => {
         >
           <SubBox style={{ height: "100%" }}>
             <Words>Total</Words>
-            <Words>Volume{"\n"}</Words>
+            <Words>Strategies{"\n"}</Words>
             <BoldWords style={{ fontSize: 16 }}>
               ${fundInfo[0].totalValue.toLocaleString()}
             </BoldWords>
           </SubBox>
           <SubBox style={{ height: "100%", marginHorizontal: 10 }}>
             <Words>
-              Returns{"\n"}
+              Average Return
               {"\n"}
             </Words>
             <BoldWords style={{ fontSize: 16 }}>
@@ -139,7 +139,7 @@ const LandingPage = ({ navigation }) => {
           </SubBox>
           <SubBox style={{ height: "100%" }}>
             <Words>
-              Investors{"\n"}
+              Stakers{"\n"}
               {"\n"}
             </Words>
             <BoldWords style={{ fontSize: 16 }}>
@@ -164,7 +164,10 @@ const LandingPage = ({ navigation }) => {
           </BoldWords>
           <CheckoutBox style={{ marginTop: "10%" }}>
             <View style={{ justifyContent: "center", flex: 4 }}>
-              <BoldWords style={{ fontSize: 17 }}>Arbitrage</BoldWords>
+              <BoldWords style={{ fontSize: 17 }}>
+                Arbitrage{"\n"}
+                Future Spread
+              </BoldWords>
               <BoldWords style={{ fontSize: 12 }}>
                 APR {strategyInfo[0].arbitrage.apr}%
               </BoldWords>
@@ -194,7 +197,10 @@ const LandingPage = ({ navigation }) => {
           </CheckoutBox>
           <CheckoutBox>
             <View style={{ justifyContent: "center", flex: 4 }}>
-              <BoldWords style={{ fontSize: 17 }}>BTC Hedge</BoldWords>
+              <BoldWords style={{ fontSize: 17 }}>
+                Arbitrage{"\n"}
+                Kimchi Premium
+              </BoldWords>
               <BoldWords style={{ fontSize: 12 }}>
                 APR {strategyInfo[0].btcHedge.apr}%
               </BoldWords>
@@ -224,7 +230,7 @@ const LandingPage = ({ navigation }) => {
           </CheckoutBox>
           <CheckoutBox>
             <View style={{ justifyContent: "center", flex: 4 }}>
-              <BoldWords style={{ fontSize: 17 }}>Funding Rate</BoldWords>
+              <BoldWords style={{ fontSize: 17 }}>Soar & Plunge</BoldWords>
               <BoldWords style={{ fontSize: 12 }}>
                 APR {strategyInfo[0].fundingRate.apr}%
               </BoldWords>
@@ -285,7 +291,7 @@ const LandingPage = ({ navigation }) => {
             }}
           >
             <BoldWords style={{ fontSize: 15, letterSpacing: 1 }}>
-              Deposit Coins
+              Go to QVE defi
             </BoldWords>
           </InvestBtn>
         </WordBox>
@@ -301,17 +307,17 @@ const LandingPage = ({ navigation }) => {
           >
             <Image
               source={require("../../../assets/img/Discord.png")}
-              style={{ width: 60, height: 60 }}
+              style={{ width: 40, height: 40 }}
               resizeMode="contain"
             />
             <Image
               source={require("../../../assets/img/Twitter.png")}
-              style={{ width: 60, height: 60, marginHorizontal: 30 }}
+              style={{ width: 40, height: 40, marginHorizontal: 30 }}
               resizeMode="contain"
             />
             <Image
               source={require("../../../assets/img/Telegram.png")}
-              style={{ width: 60, height: 60 }}
+              style={{ width: 40, height: 40 }}
               resizeMode="contain"
             />
           </View>
